@@ -7,5 +7,5 @@ import { RouterOutlet } from '@angular/router';
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    title = 'angular-introduction';
+    protected title = 'angular-introduction';
 }
