@@ -1,9 +1,10 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "angular.ng-template",
-    "bradlc.vscode-tailwindcss",
-    "mikerhyssmith.ts-barrelr"
-  ]
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "angular.ng-template",
+        "bradlc.vscode-tailwindcss",
+        "mikerhyssmith.ts-barrelr",
+        "EditorConfig.EditorConfig"
+    ]
 }
