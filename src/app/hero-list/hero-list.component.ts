@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { defaultHeroes, Hero } from '../shared/models';
+import { Component, inject } from '@angular/core';
+import { Hero } from '../shared/models';
+import { AppState } from '../shared/app.state';
 
 @Component({
     selector: 'app-hero-list',
@@ -29,9 +30,11 @@ import { defaultHeroes, Hero } from '../shared/models';
     `,
 })
 export default class HeroListComponent {
-    protected readonly heroes = signal(defaultHeroes);
+    private readonly appState = inject(AppState);
+
+    protected readonly heroes = this.appState.heroes;
 
     protected deleteHero(hero: Hero) {
-        this.heroes.update((heroes) => heroes.filter((h) => h.id !== hero.id));
+        this.appState.deleteHero(hero);
     }
 }
