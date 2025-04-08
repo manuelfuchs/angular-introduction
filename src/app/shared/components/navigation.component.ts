@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 interface NavItem {
     name: string;
-    route: string;
+    route: string[];
 }
 
 @Component({
     selector: 'app-navigation',
+    imports: [RouterLink, RouterLinkActive],
     template: `
         <nav class="flex items-center justify-center h-16 border-b-2">
             <div class="flex items-center gap-16">
-                <h1 class="text-xl">Tour of heroes</h1>
+                <a class="text-xl" [routerLink]="'/'">Tour of heroes</a>
 
                 <div class="flex gap-5">
                     @for (navItem of navItems; track $index) {
-                    <a>{{ navItem.name }}</a>
+                    <a
+                        [routerLink]="navItem.route"
+                        routerLinkActive="underline"
+                        >{{ navItem.name }}</a
+                    >
                     }
                 </div>
             </div>
@@ -25,11 +31,11 @@ export class NavigationComponent {
     protected readonly navItems: NavItem[] = [
         {
             name: 'Dashboard',
-            route: '/dashboard',
+            route: ['/dashboard'],
         },
         {
             name: 'Heroes',
-            route: '/hero-list',
+            route: ['/heroes'],
         },
     ];
 }
