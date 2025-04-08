@@ -7,7 +7,12 @@ import { RouterOutlet } from '@angular/router';
     imports: [NavigationComponent, RouterOutlet],
     template: `
         <app-navigation />
-        <router-outlet />
+
+        <div class="overflow-y-auto h-[calc(100vh-64px)]">
+            <div class="container mx-auto mt-4">
+                <router-outlet />
+            </div>
+        </div>
     `,
 })
 export class AppComponent {}

@@ -10,7 +10,7 @@ interface NavItem {
     selector: 'app-navigation',
     imports: [RouterLink, RouterLinkActive],
     template: `
-        <nav class="flex items-center justify-center h-16 border-b-2">
+        <nav class="flex items-center justify-center h-[64px] border-b-2">
             <div class="flex items-center gap-16">
                 <a class="text-xl" [routerLink]="'/'">Tour of heroes</a>
 
