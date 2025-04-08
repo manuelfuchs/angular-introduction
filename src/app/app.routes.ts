@@ -5,10 +5,12 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         loadComponent: () => import('./dashboard/dashboard.component'),
+        title: 'Dashboard',
     },
     {
         path: 'heroes',
         loadComponent: () => import('./hero-list/hero-list.component'),
+        title: 'Heroes',
     },
 
     // NOTE: Currently no 404 page -> redirect all to home
