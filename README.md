@@ -10,6 +10,7 @@ Afterwards, the following steps were performed:
     1. Angular v21
     2. Tailwindcss v4
 5. Add prettier
+6. Remove zone.js
 
 ## Development server
 
