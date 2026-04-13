@@ -1,16 +1,38 @@
 import { Component, effect, inject, input } from '@angular/core';
 import { createHeroDetailForm } from './hero-detail-form.type';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AppState } from '../shared/app.state';
+import { InputTextComponent } from '../shared/components/forms/input-text.component';
 
 @Component({
     selector: 'app-hero-detail',
+    imports: [ReactiveFormsModule, InputTextComponent],
     template: `
-        <div class="flex flex-col">
-            <span>hero-detail</span>
-            <span>{{ heroId() }}</span>
-            <span>{{ form.controls.name.value }}</span>
-        </div>
+        <form
+            [formGroup]="form"
+            (ngSubmit)="handleSubmit()"
+            class="flex flex-col gap-3"
+        >
+            <app-input-text [control]="form.controls.name" label="Name" />
+
+            <button
+                type="submit"
+                class="bg-purple-500 text-white py-2 rounded-lg"
+            >
+                Speichern
+            </button>
+        </form>
+
+        <input
+            id="myInputList"
+            list="valueList"
+            type="text"
+            [formControl]="form.controls.test"
+        />
+        <datalist id="valueList">
+            <option value="Option 1"></option>
+            <option value="Badminton"></option>
+        </datalist>
     `,
 })
 export default class HeroDetailComponent {
@@ -40,5 +62,14 @@ export default class HeroDetailComponent {
                 name: hero.name,
             });
         });
+    }
+
+    protected handleSubmit(): void {
+        this.form.markAllAsTouched();
+        if (this.form.invalid) {
+            return;
+        }
+
+        console.log('valid and can be submitted');
     }
 }
