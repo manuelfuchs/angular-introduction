@@ -1,21 +1,23 @@
-// @ts-check
-const eslint = require('@eslint/js');
-const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
+import js from '@eslint/js';
+import angular from 'angular-eslint';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
 
-module.exports = tseslint.config(
+export default tseslint.config(
     {
-        ignores: ['.angular/', '.nx/'],
+        ignores: ['.angular/'],
     },
+    eslintConfigPrettier,
     {
         files: ['**/*.ts'],
-        extends: [
-            eslint.configs.recommended,
-            ...tseslint.configs.strict,
-            ...tseslint.configs.stylistic,
-            ...angular.configs.tsRecommended,
-        ],
+        extends: [js.configs.recommended, tseslint.configs.strict, angular.configs.tsRecommended],
         processor: angular.processInlineTemplates,
+        languageOptions: {
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
         rules: {
             quotes: [
                 'error',
@@ -57,11 +59,42 @@ module.exports = tseslint.config(
             ],
 
             '@typescript-eslint/no-extraneous-class': ['error', { allowWithDecorator: true }],
+
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                },
+            ],
+
+            '@typescript-eslint/strict-boolean-expressions': [
+                'error',
+                {
+                    allowAny: false,
+                    allowNullableBoolean: true, // TODO: Maybe change to false
+                    allowNullableEnum: false,
+                    allowNullableNumber: false,
+                    allowNullableObject: true,
+                    allowNullableString: true,
+                    allowNumber: false,
+                    allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
+                    allowString: true,
+                },
+            ],
         },
     },
     {
         files: ['**/*.html'],
-        extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
-        rules: {},
+        extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
+        rules: {
+            '@angular-eslint/template/prefer-self-closing-tags': 'error',
+            '@angular-eslint/template/eqeqeq': [
+                'error',
+                {
+                    allowNullOrUndefined: true,
+                },
+            ],
+        },
     },
 );

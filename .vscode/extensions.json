@@ -5,6 +5,7 @@
         "angular.ng-template",
         "bradlc.vscode-tailwindcss",
         "mikerhyssmith.ts-barrelr",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode"
     ]
 }

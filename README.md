@@ -7,8 +7,9 @@ Afterwards, the following steps were performed:
 2. Add tailwindcss
 3. Add eslint
 4. 2026-04 Update: Dependency Upgrade
-   1. Angular v21
-   2. Tailwindcss v4
+    1. Angular v21
+    2. Tailwindcss v4
+5. Add prettier
 
 ## Development server
 
