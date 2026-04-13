@@ -6,6 +6,9 @@ Afterwards, the following steps were performed:
 1. Remove unit testing (jasmine, karma)
 2. Add tailwindcss
 3. Add eslint
+4. 2026-04 Update: Dependency Upgrade
+   1. Angular v21
+   2. Tailwindcss v4
 
 ## Development server
 
